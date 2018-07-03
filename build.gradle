@@ -1,0 +1,37 @@
+group 'org.vs.myspring'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+idea {
+    module {
+//            downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.fluttercode.datafactory:datafactory:0.8'
+
+    compile 'org.reflections:reflections:0.9.11'
+    compile 'org.aspectj:aspectjweaver:1.8.10'
+    compile 'org.aspectj:aspectjrt:1.8.10'
+
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'ch.qos.logback:logback-core:1.2.3'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+
+    compile 'org.projectlombok:lombok:1.16.18'
+
+//    compile 'org.springframework:spring-context:5.0.7.RELEASE'
+//    compile 'org.springframework:spring-test:5.0.7.RELEASE'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-all:1.10.19'
+}
