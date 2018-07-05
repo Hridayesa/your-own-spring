@@ -19,19 +19,23 @@ public class Configuration {
 
     public <T> Class<? extends T> getImplClass(Class<T> key) {
         // пробуем взять из кэша
-        Class<? extends T> res = (Class<? extends T>)implClasses.get(key);
+        Class<? extends T> res = (Class<? extends T>) implClasses.get(key);
 
         // сканируем
-        if (res==null){
+        if (res == null) {
             res = scanForImpl(key);
         }
         res = (res != null) ? res : key;
 
         // кэшируем
-        if (res!=null){
+        if (res != null) {
             implClasses.put(key, res);
         }
         return res;
+    }
+
+    public <T> Set<Class<? extends T>> getImplClasses(Class<T> key) {
+        return scanner.getSubTypesOf(key);
     }
 
     private <T> Class<? extends T> scanForImpl(Class<T> key) {
