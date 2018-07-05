@@ -1,2 +1,2 @@
-# your-own-spring
-Write your own SPRING (exercise)
+# Write your own spring
+## Exercise #1 (Extract factories)
