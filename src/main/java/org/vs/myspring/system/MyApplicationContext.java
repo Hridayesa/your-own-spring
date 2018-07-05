@@ -1,4 +1,4 @@
-package org.vs.myspring.app;
+package org.vs.myspring.system;
 
 import lombok.SneakyThrows;
 
@@ -12,7 +12,7 @@ public class MyApplicationContext {
 
     @SneakyThrows
     public <T> T getBean(Class<T> key){
-        Class implClass = configuration.getImplClass(key);
+        Class<T> implClass = configuration.getImplClass(key);
 
         T res = (T)implClass.newInstance();
 

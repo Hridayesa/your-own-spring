@@ -1,4 +1,4 @@
-package org.vs.myspring.app;
+package org.vs.myspring.system;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,8 +10,6 @@ public class Configuration {
     private final Map<Class, Class> implClasses = new HashMap<>();
 
     public Configuration() {
-        implClasses.put(Cleaner.class, CleanerImpl.class);
-        implClasses.put(Speaker.class, SpeakerImpl.class);
     }
 
     public <T> Class<T> getImplClass(Class<T> key) {
