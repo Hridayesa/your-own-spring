@@ -21,11 +21,14 @@ public class Configuration {
         // пробуем взять из кэша
         Class<? extends T> res = (Class<? extends T>) implClasses.get(key);
 
+        if (res==null && !key.isInterface()){
+            res = key;
+        }
+
         // сканируем
         if (res == null) {
             res = scanForImpl(key);
         }
-        res = (res != null) ? res : key;
 
         // кэшируем
         if (res != null) {
@@ -40,7 +43,7 @@ public class Configuration {
 
     private <T> Class<? extends T> scanForImpl(Class<T> key) {
         Set<Class<? extends T>> set = scanner.getSubTypesOf(key);
-        if (set.size() != 1) {
+        if (key.isInterface() && set.size() != 1) {
             throw new RuntimeException(key + " has 0 or more than one impl.");
         }
         return set.iterator().next();

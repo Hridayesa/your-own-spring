@@ -2,6 +2,7 @@ package org.vs.myspring.app;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.vs.myspring.system.Configuration;
 import org.vs.myspring.system.MyApplicationContext;
 
 /**
@@ -10,7 +11,8 @@ import org.vs.myspring.system.MyApplicationContext;
 public class InjectRandomIntTest {
     @Test
     public void injectTest() {
-        Cleaner cleaner = MyApplicationContext.getInstance().getBean(Cleaner.class);
+        MyApplicationContext context = new MyApplicationContext(new Configuration("org.vs.myspring"));
+        Cleaner cleaner = context.getBean(Cleaner.class);
         Assert.assertTrue(cleaner.getSpeed() > 6);
     }
 }
