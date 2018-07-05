@@ -1,6 +1,11 @@
 package org.vs.myspring.system;
 
 import lombok.SneakyThrows;
+import org.reflections.ReflectionUtils;
+
+import java.lang.reflect.Field;
+import java.util.Random;
+import java.util.Set;
 
 public class MyApplicationContext {
     private final static MyApplicationContext context = new MyApplicationContext();
@@ -15,6 +20,19 @@ public class MyApplicationContext {
         Class<? extends T> implClass = configuration.getImplClass(key);
 
         T res = (T)implClass.newInstance();
+
+        Set<Field> fields = ReflectionUtils.getAllFields(implClass);
+        for (Field field : fields) {
+            InjectRandomInt annotation = field.getAnnotation(InjectRandomInt.class);
+            if (annotation != null) {
+                int min = annotation.min();
+                int max = annotation.max();
+                Random random = new Random();
+                int value = min + random.nextInt(max - min);
+                field.setAccessible(true);
+                field.set(res,value);
+            }
+        }
 
         return res;
     }

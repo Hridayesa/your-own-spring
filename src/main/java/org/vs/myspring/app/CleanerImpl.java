@@ -3,6 +3,7 @@ package org.vs.myspring.app;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.vs.myspring.system.InjectRandomInt;
 
 @Slf4j
 @Getter
