@@ -21,20 +21,29 @@ public class MyApplicationContext {
 
         T res = (T)implClass.newInstance();
 
-        Set<Field> fields = ReflectionUtils.getAllFields(implClass);
-        for (Field field : fields) {
-            InjectRandomInt annotation = field.getAnnotation(InjectRandomInt.class);
-            if (annotation != null) {
-                int min = annotation.min();
-                int max = annotation.max();
-                Random random = new Random();
-                int value = min + random.nextInt(max - min);
-                field.setAccessible(true);
-                field.set(res,value);
-            }
-        }
+        postProcess(res);
 
         return res;
+    }
+
+    private <T> void postProcess(T res) {
+        for(MyBeanPostProcessor postProcessor: postProsessors){
+            postProcessor.postProcess(res);
+        }
+
+        //TODO Вынести в реализацию MyBeanPostProcessor
+//        Set<Field> fields = ReflectionUtils.getAllFields(implClass);
+//        for (Field field : fields) {
+//            InjectRandomInt annotation = field.getAnnotation(InjectRandomInt.class);
+//            if (annotation != null) {
+//                int min = annotation.min();
+//                int max = annotation.max();
+//                Random random = new Random();
+//                int value = min + random.nextInt(max - min);
+//                field.setAccessible(true);
+//                field.set(res,value);
+//            }
+//        }
     }
 
 }
