@@ -1,10 +1,10 @@
 package org.vs.myspring.app;
 
-import org.vs.myspring.system.MyApplicationContext;
-
 public class IRobot {
-    private final Cleaner cleaner = MyApplicationContext.getInstance().getBean(Cleaner.class);
-    private final Speaker speaker = MyApplicationContext.getInstance().getBean(Speaker.class);
+    @MyAutowire
+    private final Cleaner cleaner;
+    @MyAutowire
+    private final Speaker speaker;
 
     void cleanRoom() {
         speaker.speak("START !!!");

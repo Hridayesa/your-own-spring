@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 public class MyApplicationContext {
-    private final static MyApplicationContext context
-            = new MyApplicationContext(new Configuration("org.vs.myspring")); // Название пакета потом надо будет убрать
+//    private final static MyApplicationContext context
+//            = new MyApplicationContext(new Configuration("org.vs.myspring")); // Название пакета потом надо будет убрать
     private final Configuration configuration;
     private final List<MyBeanPostProcessor> postProcessors = new LinkedList<>();
 
@@ -17,9 +17,9 @@ public class MyApplicationContext {
         initPostProcessors(configuration);
     }
 
-    public static MyApplicationContext getInstance() {
-        return context;
-    }
+//    public static MyApplicationContext getInstance() {
+//        return context;
+//    }
 
     @SneakyThrows
     private void initPostProcessors(Configuration configuration) {
