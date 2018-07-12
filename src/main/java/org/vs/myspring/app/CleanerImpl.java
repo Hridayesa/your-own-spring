@@ -12,6 +12,11 @@ public class CleanerImpl implements Cleaner {
     @InjectRandomInt(min = 7, max = 17)
     private int speed;
 
+    @MyPostConstruct
+    private void init(){
+        log.info("Hi from CLEANER (speed="+speed+")");
+    }
+
     @Override
     public void clean() {
         log.info("CLEAN!!! (speed=" + speed + ")");
