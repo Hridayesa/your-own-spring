@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.vs.myspring.system.InjectRandomInt;
+import org.vs.myspring.system.MyPostConstruct;
 
 @Slf4j
 @Getter
@@ -13,8 +14,8 @@ public class CleanerImpl implements Cleaner {
     private int speed;
 
     @MyPostConstruct
-    private void init(){
-        log.info("Hi from CLEANER (speed="+speed+")");
+    private void init() {
+        log.info("Hi from CLEANER (speed=" + speed + ")");
     }
 
     @Override
