@@ -5,7 +5,7 @@
 
  __Write your own spring!!!__
 
-It is series of exercises for better understanding what is inside of the spring framework.
+It is series of exercises for better understanding what is inside of the __spring framework__.
 It is inspired by __Evgeny Borisov__ speeches.
 
 * Starting points for each exercise in the ```exercise#-start``` git branch.
