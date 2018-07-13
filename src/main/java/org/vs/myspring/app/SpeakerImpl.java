@@ -3,6 +3,7 @@ package org.vs.myspring.app;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Benchmark
 public class SpeakerImpl implements Speaker {
 
     @Override
