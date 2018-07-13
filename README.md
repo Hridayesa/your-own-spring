@@ -11,7 +11,6 @@ There are several ways to create proxy. This time use dynamic proxy:
 import java.lang.reflect.Proxy;
 ...
 Proxy.newProxyInstance(...)
-
 ```
 
 To get interfaces use:
