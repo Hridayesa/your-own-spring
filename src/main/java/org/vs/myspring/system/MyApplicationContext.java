@@ -36,9 +36,9 @@ public class MyApplicationContext implements ApplicationContext {
 
         T res = (T) implClass.newInstance();
 
-        res = postProcess(res, implClass);
-
+        res = postProcessBeforeInitialization(res, implClass);
         invokeInit(implClass, res);
+        res = postProcessAfterInitialization(res, implClass);
 
         return res;
     }
@@ -51,9 +51,16 @@ public class MyApplicationContext implements ApplicationContext {
         }
     }
 
-    private <T> T postProcess(T res, Class<? extends T> implClass) {
+    private <T> T postProcessBeforeInitialization(T res, Class<? extends T> implClass) {
         for (MyBeanPostProcessor postProcessor : postProcessors) {
-            res = postProcessor.postProcess(res, implClass);
+            res = postProcessor.postProcessBeforeInitialization(res, implClass);
+        }
+        return res;
+    }
+
+    private <T> T postProcessAfterInitialization(T res, Class<? extends T> implClass) {
+        for (MyBeanPostProcessor postProcessor : postProcessors) {
+            res = postProcessor.postProcessAfterInitialization(res, implClass);
         }
         return res;
     }

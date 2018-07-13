@@ -19,6 +19,7 @@ public class CleanerImpl implements Cleaner {
     }
 
     @Override
+    @Benchmark
     public void clean() {
         log.info("CLEAN!!! (speed=" + speed + ")");
     }

@@ -14,7 +14,7 @@ public class MyAutowirePostProcessor implements MyBeanPostProcessor, Application
 
     @Override
     @SneakyThrows
-    public <T> T postProcess(T obj, Class<? extends T> implClass) {
+    public <T> T postProcessBeforeInitialization(T obj, Class<? extends T> implClass) {
         Set<Field> fields = ReflectionUtils.getAllFields(implClass);
         for(Field field: fields){
             if (field.isAnnotationPresent(MyAutowire.class)){

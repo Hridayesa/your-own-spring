@@ -13,7 +13,7 @@ import java.util.Set;
 public class InjectRandomIntPostProcessor implements MyBeanPostProcessor{
     @Override
     @SneakyThrows
-    public <T> T postProcess(T obj, Class<? extends T> implClass) {
+    public <T> T postProcessBeforeInitialization(T obj, Class<? extends T> implClass) {
         Set<Field> fields = ReflectionUtils.getAllFields(implClass);
         for (Field field : fields) {
             InjectRandomInt annotation = field.getAnnotation(InjectRandomInt.class);
