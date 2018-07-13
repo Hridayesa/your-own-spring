@@ -1,20 +1,24 @@
 # Write your own spring
-## Exercise #7 (Implement the way of creating proxies for aspect logic)
-Now you should implement the way to enhance the behaviour of beans. 
-Do it by creating proxies for beans.
-* Create annotation ```@Benchmark``` and use in ```SpeakerImpl```
-* Create system code that applies different "proxy" logic after creating and configuring a new bean.  
-* Create "business" logic code that implements proxy for ```@Benchmark``` that counts method execution time.
+* If you want to understand how it works
+* If you want to know how to use it properly
+* If you want to easily solve "mysterious spring" problems 
 
-There are several ways to create proxy. This time use dynamic proxy:
-```java
-import java.lang.reflect.Proxy;
-...
-Proxy.newProxyInstance(...)
-```
+ __Write your own spring!!!__
 
-To get interfaces use:
-```java
-type.getInterfaces();
-```
-## Solution in ```exercise7-solution``` branch
+It is series of exercises for better understanding what is inside of the __spring framework__.
+It is inspired by __Evgeny Borisov__ speeches.
+
+* Starting points for each exercise in the ```exercise#-start``` git branch.
+* Solution for exercises in the ```exercise#-solution``` git branch
+
+All exercises are sequential. Exercises are steps of creating ```your own spring```.
+To start exercise you need to checkout from git an appropriate branch (```exercise#-start```). 
+In the ```README.md``` in each branch there is explanation and hints for exercise.
+
+* Exercise #1 (Extract factories)
+* Exercise #2 (Reflection scan for implementations)
+* Exercise #3 (Configure object before use)
+* Exercise #4 (Configure object before use. Part2. Post processors)
+* Exercise #5 (Create your own @Autowire)
+* Exercise #6 (Create your own @MyPostConstruct)
+* Exercise #7 (Implement the way of creating proxies for aspect logic)
